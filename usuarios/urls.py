@@ -7,5 +7,5 @@ app_name = "usuarios"
 urlpatterns = [
     path('', views.login_view, name='login'),  # Usa LoginView directamente
     path('inicio/', views.index, name='index'),
-    path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
+    path('logout/', views.logout_view, name='logout'),
 ]

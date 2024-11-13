@@ -1,7 +1,44 @@
 {% extends 'componentes/base.html' %}
-<title>{% block title %}Mi Sistema De Inventario{% endblock %}</title>
+<title>{% block title %}Mi Sistema De Inventario{% endblock %} - Administración de Inventario, Créditos y Clientes</title>
 {% block content %}
 
-    <h1 class="text-center">Bienvenido al sistema de inventario</h1>
+    <div class="container">
+        <h1 class="text-center my-4">Bienvenido al Sistema de Inventario</h1>
+        <p class="text-center">Administra tu inventario, créditos y clientes de manera eficiente.</p>
+
+        <div class="row text-center my-5">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Inventario</h5>
+                        <p class="card-text">Gestiona tus productos y controla el stock disponible.</p>
+                        <a href="" class="btn btn-primary">Ir a Inventario</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Créditos</h5>
+                        <p class="card-text">Administra los créditos otorgados y pendientes de pago.</p>
+                        <a href="" class="btn btn-primary">Ir a Créditos</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Clientes</h5>
+                        <p class="card-text">Gestiona la información de tus clientes y su historial.</p>
+                        <a href="" class="btn btn-primary">Ir a Clientes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="text-center my-4">
+            <p>&copy; {{ current_year }} Mi Sistema De Inventario. Todos los derechos reservados.</p>
+        </footer>
+    </div>
 
 {% endblock %}
