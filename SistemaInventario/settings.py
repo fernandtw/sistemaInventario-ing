@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'usuarios',
+    'usuarios.apps.UsuariosConfig',
+    'puntoDeVentaApp',
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -123,7 +126,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+CRISPY_TEMPLATE_PACK = 'bootstrap5'  # O 'bootstrap5', dependiendo de tu versión
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -139,4 +142,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'usuarios:index'
+LOGIN_URL = 'usuarios:login' 
 

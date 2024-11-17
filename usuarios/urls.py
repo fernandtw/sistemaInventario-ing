@@ -8,4 +8,6 @@ urlpatterns = [
     path('', views.login_view, name='login'),  # Usa LoginView directamente
     path('inicio/', views.index, name='index'),
     path('logout/', views.logout_view, name='logout'),
+    path('registro/', views.registro, name='registro'),
+
 ]
