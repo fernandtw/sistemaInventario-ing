@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'puntoDeVentaApp',
     'crispy_forms',
     'crispy_bootstrap5',
+    'productos',
 ]
 
 MIDDLEWARE = [
