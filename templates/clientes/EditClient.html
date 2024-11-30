@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Clientes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Editar Clientes</h1>
+    <form action="{% url 'editar_cliente' cliente.id_cliente %}" method="post">
+        {% csrf_token %}
+        <label for="nombre_cliente">Nombre</label>
+        <input type="text" name="nombre_cliente" id="nombre_cliente" value="{{ cliente.nombre_cliente }}" required>
+
+        <label for="apellido_cliente">Descripción</label>
+        <input type="text" name="apellido_cliente" id="apellido_cliente" value="{{ cliente.apellido_cliente }}" required>
+
+        <label for="telefono_cliente">Telefono</label>
+        <input type="text" name="telefono_cliente" id="telefono_cliente" value="{{ cliente.telefono_cliente }}" required>
+
+        <button type="submit" class="btn">Actualizar</button>
+    </form>
+</body>
+</html>
