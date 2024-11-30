@@ -1,0 +1,51 @@
+{% extends 'componentes/base.html' %}
+{% block title %}Agregar Credito{% endblock %}
+{% load crispy_forms_tags %}
+
+
+
+{% block content %}
+
+
+<div class="contianer">
+
+    
+           <div class="row">
+            <div class="col-12-col-md-6 offset">
+                <div class="card w-50 mx-auto">
+                    <div class="card-body" >
+                        <h2>Nuevo Credito</h2>
+                        <hr>
+    
+                <form action="" method="post" enctype="multipart/form-data">
+    
+    
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    
+                    <div class="d-flex justify-content-end">
+                        <input type="reset" value="Cancelar" class="btn btn-secondary">
+                        &nbsp;
+                        <input type="submit" value="Guardar" class="btn btn-primary">
+                    </div>
+                  
+    
+    
+                </form>
+                {{mensaje}}
+    
+    
+            
+            </div>
+        </div>
+    
+    
+        </div>
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}
