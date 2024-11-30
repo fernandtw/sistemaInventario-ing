@@ -13,6 +13,7 @@
     <table  class="table table-striped table-hover table-responsive-sm my-2">
         <tr>
             <th>Nombre</th>
+            <th>Producto</th>
             <th>Deuda</th>
             <th>Fecha</th>
             <th>Monto</th>
@@ -21,12 +22,13 @@
         {% for credito in creditos %}
     
         <tr>
-            <td>{{ credito.nombre | title }}</td>
+            <td>{{ credito.cliente | title }}</td>
+            <td>{{ credito.producto | title }}</td>
             <td>{{ credito.deuda | intcomma  }}</td>
             <td>{{ credito.fecha | date }}</td>
             <td>{{ credito.monto | intcomma }}</td>
             <td>
-                <a href="{% url 'creditos:modificar_credito' credito.id %}" class="btn btn-info btn-sm">Modificar</a>
+                <a href="{% url 'creditos:modificar_credito' credito.id %}" class="btn btn-info btn-sm mb-3">Modificar</a>
                 <a href="{% url 'creditos:eliminar_credito' credito.id %}" class="btn btn-danger btn-sm">Eliminar</a>
             </td>
     

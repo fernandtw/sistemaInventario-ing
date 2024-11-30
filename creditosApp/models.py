@@ -1,4 +1,6 @@
 from django.db import models
+from clientesCrudApp.models import Cliente
+from productos.models import Producto
 
 # Create your models here.
 class Credito(models.Model):
@@ -7,7 +9,8 @@ class Credito(models.Model):
         PAGADA = 'Pagada', 'Pagada'
         CANCELADA = 'Cancelada', 'Cancelada'
 
-    nombre = models.CharField(max_length=100)
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=True, blank=True) 
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE,  null=True, blank=True)  # Clave foránea a Producto
     deuda = models.CharField(
         max_length=10,  # Longitud suficiente para las opciones de texto
         choices=DeudaChoices.choices,
