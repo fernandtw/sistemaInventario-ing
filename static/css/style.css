@@ -121,3 +121,49 @@ tr:nth-child(even) {
     background-color: #dc3545;
     color: white;
 }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+}
+h1 {
+    text-align: center;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+table, th, td {
+    border: 1px solid #ddd;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #007bff;
+    color: white;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.btn {
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+}
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+.btn-warning {
+    background-color: #ffc107;
+    color: white;
+}
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
