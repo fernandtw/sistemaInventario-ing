@@ -1,51 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Producto</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            text-align: center;
-        }
-        form {
-            max-width: 500px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        label {
-            font-weight: bold;
-            display: block;
-            margin: 10px 0 5px;
-        }
-        input[type="text"], input[type="number"] {
-            width: 100%;
-            padding: 8px;
-            margin: 5px 0 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .btn {
-            padding: 10px 20px;
-            border: none;
-            background-color: #007bff;
-            color: white;
-            cursor: pointer;
-            width: 100%;
-            border-radius: 4px;
-        }
-    </style>
-</head>
-<body>
+
+{% extends 'componentes/base.html' %}
+{% block content %}
     <h1>Editar Producto</h1>
     <form action="{% url 'editar_producto' producto.id %}" method="post">
         {% csrf_token %}
@@ -56,12 +11,11 @@
         <input type="text" name="descripcion" id="descripcion" value="{{ producto.descripcion }}" required>
 
         <label for="precio">Precio</label>
-        <input type="number" name="precio" id="precio" value="{{ producto.precio }}" required>
+        <input type="text" name="precio" id="precio" value="{{ producto.precio }}" required>
 
         <label for="cantidad">Cantidad</label>
         <input type="number" name="cantidad" id="cantidad" value="{{ producto.cantidad }}" required>
 
         <button type="submit" class="btn">Actualizar</button>
     </form>
-</body>
-</html>
+{% endblock %}
