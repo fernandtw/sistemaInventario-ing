@@ -28,7 +28,9 @@ def editar_producto(request, pk):
         nombre = request.POST.get('nombre')
         descripcion = request.POST.get('descripcion')
         precio = request.POST.get('precio')
+        fecha_vencimiento = request.POST.get('fecha_vencimiento')
         cantidad = request.POST.get('cantidad')
+               
 
         # Reemplazar la coma por un punto en el precio, si es necesario
         if precio:
@@ -38,6 +40,7 @@ def editar_producto(request, pk):
         producto.nombre = nombre
         producto.descripcion = descripcion
         producto.precio = precio  # Ya como un número decimal
+        producto.fecha_vencimiento = fecha_vencimiento
         producto.cantidad = cantidad
 
         producto.save()  # Guarda los cambios
