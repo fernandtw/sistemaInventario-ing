@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import CreditoForm, Credito
-
+from django.core.paginator import Paginator
+from django.http import Http404
 
 # Create your views here.
 def agregar_credito(request):
@@ -24,9 +25,18 @@ def agregar_credito(request):
 
 def listar_credito(request):
     creditos = Credito.objects.all()
+    page =  request.GET.get('page', 1)
+
+    try:
+        paginator = Paginator(creditos, 2)
+        creditos = paginator.page(page)
+    except:
+        raise Http404
+
 
     data ={
-        'creditos': creditos
+        'entity': creditos,
+        'paginator': paginator
     }
 
     return render(request, 'creditos/listar_credito.html', data)

@@ -19,7 +19,7 @@
             <th>Monto</th>
             <th>Opciones</th>
         </tr>
-        {% for credito in creditos %}
+        {% for credito in entity %}
     
         <tr>
             <td>{{ credito.cliente | title }}</td>
@@ -36,6 +36,9 @@
         </tr>
         {% endfor %}
     </table>
+    <div>
+        {% include 'paginator.html' %}
+    </div>
 
 </div>
 
