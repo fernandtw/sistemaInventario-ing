@@ -1,13 +1,29 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Producto
 from .forms import ProductoForm
+from django.core.paginator import Paginator
+from django.http import Http404
 
 # Vista para listar productos
 # views.py
 
 def listar_productos(request):
     productos = Producto.objects.all()  # Cambia Producto por el nombre de tu modelo si es diferente
-    return render(request, 'productos/listar.html', {'productos': productos})
+    page =  request.GET.get('page', 1)
+
+    try:
+        paginator = Paginator(productos, 2)
+        productos = paginator.page(page)
+    except:
+        raise Http404
+    
+    data = {
+        'entity': productos,
+        'paginator': paginator
+    }
+
+
+    return render(request, 'productos/listar.html', data)
 
 # Vista para agregar producto
 def agregar_producto(request):

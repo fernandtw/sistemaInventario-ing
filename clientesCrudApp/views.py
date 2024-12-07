@@ -1,11 +1,27 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Cliente
 from .forms import ClienteForm
-
+from django.core.paginator import Paginator
+from django.http import Http404
 
 def listarCliente(request):
     clientes = Cliente.objects.all() 
-    return render(request, 'clientes/clientes.html', {'clientes': clientes})
+    page =  request.GET.get('page', 1)
+
+
+    try:
+        paginator = Paginator(clientes, 2)
+        clientes = paginator.page(page)
+    except:
+        raise Http404
+
+
+    data = {
+        'entity': clientes,
+        'paginator': paginator
+    }
+
+    return render(request, 'clientes/clientes.html', data)
 
 # Vista para agregar cliente
 def agregarCliente(request):
