@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import CreditoForm, Credito
+from django.utils.timezone import now
 
 
 # Create your views here.
@@ -24,12 +25,12 @@ def agregar_credito(request):
 
 def listar_credito(request):
     creditos = Credito.objects.all()
+    hoy = now().date()
 
-    data ={
-        'creditos': creditos
-    }
+    for credito in creditos:
+        credito.dias_restantes = (credito.fecha_vencimiento - hoy).days
 
-    return render(request, 'creditos/listar_credito.html', data)
+    return render(request, 'creditos/listar_credito.html', {'creditos': creditos})
 
 
 

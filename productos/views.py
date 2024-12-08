@@ -1,13 +1,24 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Producto
 from .forms import ProductoForm
+from datetime import date, timedelta
+from django.utils import timezone
 
 # Vista para listar productos
-# views.py
 
 def listar_productos(request):
-    productos = Producto.objects.all()  # Cambia Producto por el nombre de tu modelo si es diferente
-    return render(request, 'productos/listar.html', {'productos': productos})
+    productos = Producto.objects.all()
+    now = timezone.now().date()
+    
+    for producto in productos:
+        # Cálculo correcto de vencido y próximo a vencer
+        producto.vencido = now > producto.fecha_vencimiento
+        producto.proximo_vencer = not producto.vencido and (producto.fecha_vencimiento - now).days <= 7
+        
+    return render(request, 'productos/listar.html', {
+        'productos': productos
+    })
+
 
 # Vista para agregar producto
 def agregar_producto(request):

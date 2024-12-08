@@ -167,3 +167,7 @@ tr:nth-child(even) {
     background-color: #dc3545;
     color: white;
 }
+
+h1, h2{
+    text-align: center;
+}

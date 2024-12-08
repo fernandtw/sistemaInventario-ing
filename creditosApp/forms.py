@@ -8,7 +8,13 @@ class CreditoForm(forms.ModelForm):
         fields = '__all__'
         
     fecha = forms.DateField(
-        label="Fecha",
+        label="Fecha De Otorgacion de credito",
+        required=True,
+        widget=forms.DateInput(format="%Y-%m-%d", attrs={"type": "date"}),
+        input_formats=["%Y-%m-%d"]
+    )
+    fecha_vencimiento = forms.DateField(
+        label="Fecha De Vencimiento",
         required=True,
         widget=forms.DateInput(format="%Y-%m-%d", attrs={"type": "date"}),
         input_formats=["%Y-%m-%d"]

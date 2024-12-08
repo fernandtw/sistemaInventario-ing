@@ -8,17 +8,30 @@ class Credito(models.Model):
         PENDIENTE = 'Pendiente', 'Pendiente'
         PAGADA = 'Pagada', 'Pagada'
         CANCELADA = 'Cancelada', 'Cancelada'
+        
+    class PagoChoices(models.TextChoices):
+        NoPago = 'No pagado', 'No pagado'
+        Efectivo = 'Efectivo', 'Efectivo'
+        Tarjeta = 'Tarjeta', 'Tarjeta'
+        Transferencia = 'Transferencia', 'Transferencia'
 
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=True, blank=True) 
-    producto = models.ForeignKey(Producto, on_delete=models.CASCADE,  null=True, blank=True)  # Clave foránea a Producto
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE, null=True, blank=True)
     deuda = models.CharField(
-        max_length=10,  # Longitud suficiente para las opciones de texto
+        max_length=10,
         choices=DeudaChoices.choices,
-        default=DeudaChoices.PENDIENTE,  # Valor por defecto opcional
+        default=DeudaChoices.PENDIENTE,
     )
-    fecha = models.DateTimeField()
+    fecha = models.DateField()
+    fecha_vencimiento = models.DateField(null=True, blank=True)
     monto = models.DecimalField(max_digits=10, decimal_places=2)
+    metodo_pago = models.CharField(
+        max_length=50,
+        choices=PagoChoices.choices,
+        default=PagoChoices.NoPago,
+    )
 
     def __str__(self):
-        return f"{self.nombre} - {self.deuda}"
+        return f"{self.cliente} - {self.monto} - {self.deuda}"
+
         
